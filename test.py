@@ -1,26 +1,20 @@
 from pprint import pprint
 
-
-# filter whitelist names
-rows = [
-    {"name": "Rachel", "age": 34},
-    {"name": "Monica", "age": 34},
-    {"name": "Phoebe", "age": 37}
+cars = [
+    {"model": "Yaris", "make": "Toyota", "color": "red"},
+    {"model": "Auris", "make": "Toyota", "color": "red"},
+    {"model": "Camry", "make": "Toyota", "color": "green"},
+    {"model": "Prius", "make": "Toyota", "color": "yellow"},
+    {"model": "Civic", "make": "Honda", "color": "red"},
+    {"model": "Model 3", "make": "Tesla", "color": "red"}
 ]
 
-# filter to age < 37
-# millenials = []
-# for row in rows:
-#     if row['age'] < 37:
-#         millenials.append(row)
+# filter to red cars
 
-# pprint(millenials)
+red_cars = []
+for car in cars:
+    if car['color'] == 'red':
+        red_cars.append(car)
 
-import pandas as pd 
 
-df = pd.DataFrame(rows)
-millenials = df.query('age < 37')
-
-millenials.to_csv('millenials.csv', index=False)
-
-print(millenials)
+pprint(red_cars)
