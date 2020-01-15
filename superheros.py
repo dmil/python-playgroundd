@@ -1,23 +1,33 @@
+# by Dhrumil and Sultan
+
 # Reads superheroes.json (in this folder)
 import json
 from pprint import pprint
+import csv
 
+# Read superheroes.json
 with open('superheroes.json', 'r') as f:
-    superheroes = json.load(f)
-    
-# print(superheroes)
+	superheroes = json.load(f)
 
+# Write a header to the CSV file
+with open('superheroes.csv', 'w') as f:
+	writer = csv.writer(f)
+	headers = ["name", "age", "secretIdentity", "powers", 
+			   "squadName", "homeTown", "formed", 
+			   "secretBase", "active"]
+	writer.writerow(headers)
 
-# Creates an empty array called powers
-powers = []
-
-# Loop thorough the members of the squad, and 
-# append the powers of each to the powers array.
-members = superheroes['members']
-for member in members:
-	this_members_powers = member['powers']
-	powers.append(this_members_powers)
-
-
-# Prints those powers to the terminal
-pprint(powers)
+	# Loop over the members 
+	members = superheroes['members']
+	for member in members:
+		
+		# Define variables
+		name = member['name']
+		# age = ?????
+		# secret_identity = ????
+		this_members_powers = member['powers']
+		
+		# write row
+		row = [name, age, ]
+		writer.writerow(row)
+		
