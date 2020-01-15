@@ -11,12 +11,17 @@ with open('vegetables.csv', 'r') as f:
     vegetables = [dict(row) for row in rows] # Convert OrderedDict to regular dict
 
 
-# 2. Loop through vegetables and filter down to only green vegtables
-green_veggies = []
-for veg in vegetables:
-	if veg['color'] == 'green':
-		# 3. Print green veggies to the terminal
-		green_veggies.append(veg)
+with open('greenveggies.csv', 'w') as f:
+	writer = csv.writer(f)
+	writer.writerow(['name', 'color'])
+
+	# 2. Loop through vegetables and filter down to only green vegtables
+	green_veggies = []
+	for veg in vegetables:
+		if veg['color'] == 'green':
+			# 3. Print green veggies to the terminal
+			green_veggies.append(veg)
+			writer.writerow([veg['name'], veg['color']])
 
 
 # 4. Write the green veggies to a json file 
